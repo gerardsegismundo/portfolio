@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react'
+import { gsap } from 'gsap'
 
-function App() {
+import useLocoScroll from './utils/hooks/useLocoScroll'
+import { isMobile } from 'react-device-detect'
+
+import Landing from './components/Landing'
+import About from './components/About'
+import Project from './components/Project'
+import Contact from './components/Contact'
+
+import { yongaProps, tmnyProps } from './utils/helpers/projectProps'
+
+const App = () => {
+  // prevents flashing
+  useEffect(() => {
+    gsap.to('body', { css: { visibility: 'visible' }, duration: 0 })
+  }, [])
+
+  useLocoScroll(!isMobile)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <div className='main-container' id='main-container'>
+        <Landing />
+        <About />
+        <Project props={yongaProps} />
+        <Project props={tmnyProps} />
+        <Contact />
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App

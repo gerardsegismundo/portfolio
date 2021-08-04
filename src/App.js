@@ -8,6 +8,7 @@ import Landing from './components/Landing'
 import About from './components/About'
 import Project from './components/Project'
 import Contact from './components/Contact'
+import CustomCursor from './CustomCursor'
 
 import { yongaProps, tmnyProps } from './utils/helpers/projectProps'
 
@@ -21,7 +22,8 @@ const App = () => {
 
   return (
     <>
-      <div className='main-container' id='main-container'>
+      {!isMobile && <CustomCursor />}
+      <div className='main-container' id='main-container' style={!isMobile && { cursor: 'none' }}>
         <Landing />
         <About />
         <Project props={yongaProps} />

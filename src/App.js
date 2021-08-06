@@ -25,8 +25,8 @@ const App = () => {
     <>
       {!isMobile && <CustomCursor />}
       <div className='main-container' id='main-container' style={{ cursor: !isMobile ? 'none' : 'auto' }}>
-        {/* <Landing />
-        <About /> */}
+        <Landing />
+        <About />
         <Project props={yongaProps} />
         <Project props={tmnyProps} />
         <Contact />

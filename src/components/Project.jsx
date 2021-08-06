@@ -20,8 +20,9 @@ const Project = ({ props }) => {
   useEffect(() => {
     if (reveal) {
       const projectNodes = projectRef.current.childNodes
+      const featureLists = projectNodes[2].lastChild.childNodes
 
-      gsap.from([projectNodes, '.features li'], {
+      gsap.from([projectNodes, featureLists], {
         duration: 1,
         autoAlpha: 0,
         stagger: 0.15,

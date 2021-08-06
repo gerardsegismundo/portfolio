@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 
 import useOnScreen from './../utils/hooks/useOnScreen'
-import SplitText from '../utils/helpers/Split3.min.js'
 
 import { ReactComponent as Email } from '../assets/svg/Email.svg'
 import { ReactComponent as GitHub } from '../assets/svg/GitHub.svg'
@@ -26,14 +25,12 @@ const Contact = () => {
     if (reveal) {
       const tl = gsap.timeline()
 
-      const titleSplit = new SplitText(titleRef.current, { type: 'lines' })
       const childNodes = iconsContainerRef.current.childNodes
 
-      tl.from(titleSplit.lines, {
+      tl.from(titleRef.current, {
         duration: 3,
-        y: 0,
-        autoAlpha: 1,
-        stagger: 0.1,
+        y: 150,
+        autoAlpha: 0,
         ease: 'power4.out'
       }).to(
         [childNodes, 'footer'],
@@ -42,9 +39,8 @@ const Contact = () => {
           autoAlpha: 1,
           stagger: 0.2,
           ease: 'power4.out'
-          // onComplete: () => split.revert(),
         },
-        '-=3'
+        '-=2.5'
       )
     }
   }, [reveal])
@@ -58,9 +54,9 @@ const Contact = () => {
       <h2 ref={titleRef}>Contact</h2>
 
       <div className='icons-container' ref={iconsContainerRef}>
-        <span data-scroll data-scroll-speed='2'>
-          <Email onClick={handleOnEmail} data-scroll data-scroll-speed='2' />
-        </span>
+        <button data-scroll data-scroll-speed='2'>
+          <Email onClick={handleOnEmail} />
+        </button>
         <a
           href='https://github.com/gerardsegismundo'
           rel='noopener noreferrer'

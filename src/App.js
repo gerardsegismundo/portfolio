@@ -18,12 +18,13 @@ const App = () => {
     gsap.to('body', { css: { visibility: 'visible' }, duration: 0 })
   }, [])
 
+  // Use Locomotive scroll only on desktop
   useLocoScroll(!isMobile)
 
   return (
     <>
       {!isMobile && <CustomCursor />}
-      <div className='main-container' id='main-container' style={!isMobile && { cursor: 'none' }}>
+      <div className='main-container' id='main-container' style={{ cursor: !isMobile ? 'none' : 'auto' }}>
         <Landing />
         <About />
         <Project props={yongaProps} />

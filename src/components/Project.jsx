@@ -3,11 +3,9 @@ import gsap from 'gsap'
 import { isMobile } from 'react-device-detect'
 
 import useOnScreen from './../utils/hooks/useOnScreen'
-import YongaMobileUrl from '../assets/images/Yonga_grouped_mobile.image.png'
-import YongaDesktopUrl from '../assets/images/Yonga_grouped_desktop.image.png'
 
 const Project = ({ props }) => {
-  const { title, heading, links, features } = props
+  const { title, heading, links, features, imgURL } = props
 
   const projectContainerRef = useRef(null)
   const projectRef = useRef(null)
@@ -23,11 +21,10 @@ const Project = ({ props }) => {
     if (reveal) {
       const projectNodes = projectRef.current.childNodes
 
-      gsap.to(projectNodes, {
+      gsap.from([projectNodes, '.features li'], {
         duration: 1,
-        y: 0,
-        autoAlpha: 1,
-        stagger: 0.5,
+        autoAlpha: 0,
+        stagger: 0.15,
         ease: 'power4.out'
       })
     }
@@ -38,11 +35,11 @@ const Project = ({ props }) => {
       className='project-container'
       data-scroll-section
       ref={projectContainerRef}
-      style={!isMobile && { paddingTop: '8rem' }}
+      style={{ padding: !isMobile ? '8rem' : 0 }}
     >
-      <div className='project' ref={projectRef}>
+      <div className='project' ref={projectRef} data-is-reveal={reveal}>
         <img
-          src={isMobile ? YongaMobileUrl : YongaDesktopUrl}
+          src={isMobile ? imgURL.mobile : imgURL.desktop}
           data-is-mobile={isMobile}
           alt='project mockups'
           data-scroll
@@ -64,7 +61,7 @@ const Project = ({ props }) => {
         </div>
         <section className='features' data-scroll data-scroll-speed='3'>
           <h4>Features</h4>
-          <ul>
+          <ul style={{ maxWidth: isMobile ? '100%' : '50%' }}>
             {features.map((feature, i) => (
               <li key={title + i}>{feature}</li>
             ))}

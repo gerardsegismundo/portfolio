@@ -50,6 +50,11 @@
     height: 24rem;
     justify-content: space-between;
 
+    button {
+      background: transparent;
+      border-style: none;
+    }
+
     svg {
       height: 3.5rem;
       display: inline-block;

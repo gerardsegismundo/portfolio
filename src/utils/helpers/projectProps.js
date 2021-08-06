@@ -1,9 +1,18 @@
+import YongaMobileUrl from '../../assets/images/Yonga_mobile.png'
+import YongaDesktopUrl from '../../assets/images/Yonga_desktop.png'
+import TmnyDesktopUrl from '../../assets/images/Tmny_desktop.png'
+import TmnyMobileUrl from '../../assets/images/Tmny_mobile.png'
+
 const yongaProps = {
   title: 'Yonga',
   heading: 'Eccommerce MERN app',
+  imgURL: {
+    mobile: YongaMobileUrl,
+    desktop: YongaDesktopUrl
+  },
   links: {
-    repository: '',
-    demo: ''
+    repository: 'https://github.com/gerardsegismundo/yonga',
+    demo: 'https://yonga.herokuapp.com/'
   },
   features: [
     'Cookie-based authentication with refresh and access token. (CSRF and JWT based app)',
@@ -25,6 +34,10 @@ const yongaProps = {
 const tmnyProps = {
   title: 'TMNY',
   heading: 'BLOGS MERN WEB APP',
+  imgURL: {
+    mobile: TmnyMobileUrl,
+    desktop: TmnyDesktopUrl
+  },
   links: {
     repository: 'https://github.com/gerardsegismundo/themomnurseyogi',
     demo: 'https://themomnurseyogi.herokuapp.com/'

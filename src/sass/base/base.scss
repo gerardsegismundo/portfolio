@@ -7,6 +7,8 @@
 }
 
 html {
+  background-color: $color-dark;
+  height: 100%;
   overflow-x: hidden;
   font-family: $font-primary;
   font-size: 94%;
@@ -25,7 +27,8 @@ html {
 }
 
 body {
-  background-color: $color-dark;
+  height: 100%;
+  // background-color: $color-dark;
   font-size: 1rem;
   color: $color-light;
 }
